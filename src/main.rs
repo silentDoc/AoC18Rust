@@ -4,6 +4,7 @@ use std::path::Path;
 use stopwatch::{self, Stopwatch};
 
 mod day_01;
+mod day_02;
 
 fn read_input_file(filename: impl AsRef<Path>) -> Vec<String> 
 {
@@ -18,7 +19,7 @@ fn main()
 {
     let day:i32 = 2;
     let part:i32 = 1;
-    let test:bool = !false;
+    let test:bool = false;
 
     let mut input: String = format!("./src/Input/day{:02}", day);
     let ending: String;
@@ -55,5 +56,5 @@ fn day1(input:String, part:i32) -> i32
 fn day2(input:String, part:i32) -> i32
 {
     let lines = read_input_file(input);
-    return 0;
+    return day_02::solve(lines, part);
 }
