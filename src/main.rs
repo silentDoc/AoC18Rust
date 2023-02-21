@@ -1,12 +1,18 @@
-#![allow(unused)]
-
-use std::fmt::LowerExp;
-use std::io;
-use std::io::{Write, BufReader, BufRead, ErrorKind};
+use std::io::{BufReader, BufRead};
 use std::fs::File;
-use std::cmp::Ordering;
+use std::path::Path;
 use stopwatch::{self, Stopwatch};
 
+mod day_01;
+
+fn read_input_file(filename: impl AsRef<Path>) -> Vec<String> 
+{
+    let file = File::open(filename).expect("no such file");
+    let buf = BufReader::new(file);
+    buf.lines()
+        .map(|l| l.expect("Could not parse line"))
+        .collect()
+}
 
 fn main() 
 {
@@ -14,8 +20,8 @@ fn main()
     let part:i32 = 1;
     let test:bool = false;
 
-    let mut input: String = format!("./Input/day{:02}", day);
-    let mut ending: String = "".to_string();
+    let mut input: String = format!("./src/Input/day{:02}", day);
+    let ending: String;
 
     ending = (test.then_some("_test.txt").unwrap_or(".txt")).to_string();
     input = input + &ending;
@@ -32,11 +38,15 @@ fn main()
     };
     st.stop();
     println!("Result : {}", result);
-    println!("Ellapsed : {:4.3}", st.elapsed().as_millis()*1000);
+    let mut ellapsed_millis =  st.elapsed().as_millis() as f32;
+    ellapsed_millis = ellapsed_millis / 1000_f32;
+
+    println!("Ellapsed : {:4.3}",ellapsed_millis);
     
 }
 
 fn day1(input:String, part:i32) -> i32
 {
-    return 0;
+    let lines = read_input_file(input);
+    return day_01::solve(lines, part);
 }
