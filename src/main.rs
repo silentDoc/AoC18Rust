@@ -17,7 +17,7 @@ fn read_input_file(filename: impl AsRef<Path>) -> Vec<String>
 fn main() 
 {
     let day:i32 = 1;
-    let part:i32 = 1;
+    let part:i32 = 2;
     let test:bool = false;
 
     let mut input: String = format!("./src/Input/day{:02}", day);
