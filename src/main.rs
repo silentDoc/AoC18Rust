@@ -16,9 +16,9 @@ fn read_input_file(filename: impl AsRef<Path>) -> Vec<String>
 
 fn main() 
 {
-    let day:i32 = 1;
-    let part:i32 = 2;
-    let test:bool = false;
+    let day:i32 = 2;
+    let part:i32 = 1;
+    let test:bool = !false;
 
     let mut input: String = format!("./src/Input/day{:02}", day);
     let ending: String;
@@ -34,6 +34,7 @@ fn main()
     let result:String = match day
     {
         1 => day1(input, part).to_string(),
+        2 => day2(input, part).to_string(),
         _ => "Unimplemented day value".to_string(),
     };
     st.stop();
@@ -49,4 +50,10 @@ fn day1(input:String, part:i32) -> i32
 {
     let lines = read_input_file(input);
     return day_01::solve(lines, part);
+}
+
+fn day2(input:String, part:i32) -> i32
+{
+    let lines = read_input_file(input);
+    return 0;
 }
